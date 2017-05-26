@@ -9,11 +9,10 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-mybatis</module>
         <module>Java-review</module>
         <module>WeiXin</module>
-        <module>WeiXin</module>
-        <module>WeiXin</module>
+        <module>dubbo-demo</module>
+        <module>mybatis-generator</module>
     </modules>
 
 
@@ -28,7 +27,7 @@
         <logback-classic.version>1.2.1</logback-classic.version>
 
         <!--数据库-->
-        <mysql.version>6.0.5</mysql.version>
+        <mysql.version>5.1.41</mysql.version>
         <druid.version>1.0.28</druid.version>
 
         <!--mybatis-->
@@ -71,6 +70,12 @@
 <dependencyManagement>
     <dependencies>
         <!-- 单元测试 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -165,13 +170,17 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
-        <!--   5) spring test-->
+        <!--5) spring jdbc-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--   6) spring test-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <!--apache 相关-->
@@ -235,16 +244,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>netty</artifactId>
-                    <groupId>org.jboss.netty</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -262,12 +261,6 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>${zookeeper.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.101tec</groupId>
