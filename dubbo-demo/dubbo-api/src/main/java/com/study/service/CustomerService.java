@@ -11,4 +11,5 @@ import java.util.List;
 public interface CustomerService {
     Customer getCustomerById(Integer id);
     List<Customer> getCustomers();
+    Customer updateCustomerById(Integer id);
 }

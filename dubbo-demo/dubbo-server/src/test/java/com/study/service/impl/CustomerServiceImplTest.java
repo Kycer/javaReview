@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0 Date: 2017/5/26
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml"})
+@ContextConfiguration({"classpath:spring/spring-core.xml", "classpath:spring/spring-registry.xml"})
 public class CustomerServiceImplTest {
 
     @Autowired
@@ -33,4 +33,9 @@ public class CustomerServiceImplTest {
         System.out.println(customers);
     }
 
+    @Test
+    public void updateCustomerById() throws Exception {
+        Customer customer = customerService.updateCustomerById(27);
+        System.out.println(customer);
+    }
 }

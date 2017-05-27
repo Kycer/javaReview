@@ -16,6 +16,7 @@
         <module>dubbo-entity</module>
         <module>dubbo-server</module>
         <module>dubbo-core</module>
+        <module>dubbo-web</module>
     </modules>
 
     <dependencies>
