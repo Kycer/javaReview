@@ -45,6 +45,7 @@
         <apache-commons-lang3.version>3.5</apache-commons-lang3.version>
         <!--   3) 加密增强包 -->
         <apache-commons-codec.version>1.10</apache-commons-codec.version>
+        <apache-commons-net.version>3.6</apache-commons-net.version>
 
         <!--Servlet 相关-->
         <jstl.version>1.2</jstl.version>
@@ -199,6 +200,12 @@
                 <artifactId>commons-codec</artifactId>
                 <version>${apache-commons-codec.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${apache-commons-net.version}</version>
+            </dependency>
+
 
             <!--Servlet 相关-->
             <dependency>
