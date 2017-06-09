@@ -28,7 +28,7 @@
 
         <!--数据库-->
         <mysql.version>5.1.41</mysql.version>
-        <druid.version>1.0.28</druid.version>
+        <druid.version>1.0.29</druid.version>
 
         <!--mybatis-->
         <mybatis.version>3.4.2</mybatis.version>
@@ -37,7 +37,8 @@
 
         <!--spring 版本-->
         <spring.version>4.3.7.RELEASE</spring.version>
-
+        <!--springBoot 版本-->
+        <spring-boot.version>1.5.3.RELEASE</spring-boot.version>
         <!--apache 常用包-->
         <!--   1) http 通信  -->
         <apache-httpclient.version>4.5.3</apache-httpclient.version>
@@ -83,7 +84,14 @@
                 <version>5.0.0-M3</version>
                 <scope>test</scope>
             </dependency>
-
+            <!--更改spingBoot父工程-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!--日志管理-->
             <dependency>
                 <groupId>org.slf4j</groupId>
