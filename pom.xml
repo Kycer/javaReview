@@ -12,7 +12,9 @@
         <module>Java-review</module>
         <module>WeiXin</module>
         <module>dubbo-demo</module>
+        <module>spring-boot</module>
         <module>mybatis-generator</module>
+        <module>rabbitmq-demo</module>
     </modules>
 
 
@@ -67,6 +69,9 @@
         <!--zookeeper-->
         <zookeeper.version>3.4.10</zookeeper.version>
         <zkclient.version>0.10</zkclient.version>
+
+        <!--rabbitmq-->
+        <amqp.version>4.2.0</amqp.version>
     </properties>
 
     <dependencyManagement>
@@ -304,6 +309,11 @@
             </dependency>
 
 
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>${amqp.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
