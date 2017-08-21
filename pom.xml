@@ -15,6 +15,7 @@
         <module>spring-boot</module>
         <module>mybatis-generator</module>
         <module>rabbitmq-demo</module>
+        <module>webSocket-demo</module>
     </modules>
 
 
@@ -72,6 +73,8 @@
 
         <!--rabbitmq-->
         <amqp.version>4.2.0</amqp.version>
+
+        <websocket-api.version>1.1</websocket-api.version>
     </properties>
 
     <dependencyManagement>
@@ -314,6 +317,14 @@
                 <artifactId>amqp-client</artifactId>
                 <version>${amqp.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>javax.websocket</groupId>
+                <artifactId>javax.websocket-api</artifactId>
+                <version>${websocket-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
