@@ -7,7 +7,7 @@ import java.util.concurrent.TimeoutException;
 
 
 /**
- *  消息提供者
+ *  消息消费者
  * @author yk
  * @version 1.0 Date: 2017/8/2
  */
