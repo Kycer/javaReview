@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
  * @version 1.0 Date: 2017/8/2
  */
 public class Producer {
-    public final static String QUEUE_NAME="rabbitMQ.test";
+    private final static String QUEUE_NAME="rabbitMQ.test";
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         //设置RabbitMQ相关信息
