@@ -75,6 +75,9 @@
         <amqp.version>4.2.0</amqp.version>
 
         <websocket-api.version>1.1</websocket-api.version>
+
+        <!--BC加密-->
+        <bcprov-jdk15on.version>1.58</bcprov-jdk15on.version>
     </properties>
 
     <dependencyManagement>
@@ -325,6 +328,12 @@
                 <scope>provided</scope>
             </dependency>
 
+            <!--BC加密-->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bcprov-jdk15on.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
