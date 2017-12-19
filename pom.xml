@@ -16,13 +16,13 @@
         <module>mybatis-generator</module>
         <module>rabbitmq-demo</module>
         <module>webSocket-demo</module>
+        <module>Netty</module>
     </modules>
 
 
     <properties>
         <!--junit测试-->
         <junit.version>4.12</junit.version>
-        <junit-jupiter-api.version>5.0.0-M3</junit-jupiter-api.version>
 
         <!--日志-->
         <slf4j-api.version>1.7.21</slf4j-api.version>
@@ -66,7 +66,7 @@
         <!--dubbo相关-->
         <dubbo.version>2.5.3</dubbo.version>
         <javassist.version>3.21.0-GA</javassist.version>
-        <netty.version>4.1.9.Final</netty.version>
+        <netty.version>4.1.17.Final</netty.version>
         <!--zookeeper-->
         <zookeeper.version>3.4.10</zookeeper.version>
         <zkclient.version>0.10</zkclient.version>
@@ -87,12 +87,6 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>5.0.0-M3</version>
                 <scope>test</scope>
             </dependency>
             <!--更改spingBoot父工程-->
@@ -229,12 +223,6 @@
             <!--Servlet 相关-->
             <dependency>
                 <groupId>javax.servlet</groupId>
-                <artifactId>jstl</artifactId>
-                <version>${jstl.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${javax.servlet-api.version}</version>
                 <scope>provided</scope>
@@ -334,6 +322,7 @@
                 <artifactId>bcprov-jdk15on</artifactId>
                 <version>${bcprov-jdk15on.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
