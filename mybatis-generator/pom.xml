@@ -10,17 +10,47 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mybatis-generator</artifactId>
-
+    <properties>
+        <!--  MyBatis Generator  -->
+        <!--JDBC-->
+        <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
+        <jdbc.connectionURL>jdbc:mysql://localhost:3306/db_user</jdbc.connectionURL>
+        <jdbc.userId>root</jdbc.userId>
+        <jdbc.password>123456</jdbc.password>
+        <!--  Java接口和实体类  -->
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>tk.yksoul.mapper</targetMapperPackage>
+        <targetModelPackage>tk.yksoul.model</targetModelPackage>
+        <!--  XML生成路径  -->
+        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <targetXMLPackage>mapper</targetXMLPackage>
+        <!--  依赖版本  -->
+        <mybatis-generator-maven-plugin.version>1.3.5</mybatis-generator-maven-plugin.version>
+        <mysql.version>5.1.44</mysql.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>${mybatis-generator-maven-plugin.version}</version>
                 <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.yksoul</groupId>
+                        <artifactId>mybatis-plugins</artifactId>
+                        <version>1.0.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

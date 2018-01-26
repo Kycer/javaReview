@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--
+     1.conditional:这是默认值,这个模型和下面的hierarchical类似，除了如果那个单独的类将只包含一个字段，将不会生成一个单独的类。
+       因此,如果一个表的主键只有一个字段,那么不会为该字段生成单独的实体类,会将该字段合并到基本实体类中。
+     2.flat:该模型为每一张表只生成一个实体类。这个实体类包含表中的所有字段。这种模型最简单，推荐使用。
+     3.hierarchical:如果表有主键,那么该模型会产生一个单独的主键实体类,如果表还有BLOB字段， 则会为表生成一个包含所有BLOB字段的单独的实体类,
+       然后为所有其他的字段生成一个单独的实体类。 MBG会在所有生成的实体类之间维护一个继承关系。
+     -->
+    <context id="context" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <!--<commentGenerator>
+            阻止生成注释
+            <property name="suppressAllComments" value="true"/>
+            阻止生成的注释包含时间戳
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>-->
+        <plugin type="com.yksoul.plugins.TkMapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.yksoul.plugins.CommentPlugin"/>
+        <plugin type="com.yksoul.plugins.LombokPlugin">
+            <property name="annotations" value="Getter,Setter"/>
+        </plugin>
+        <!-- jdbc的数据库连接 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.connectionURL}" userId="${jdbc.userId}"
+                        password="${jdbc.password}"/>
+
+        <!--非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <!-- <javaTypeResolver>
+             <property name="forceBigDecimals" value="false"/>
+         </javaTypeResolver>-->
+
+        <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
+             targetPackage     指定生成的model生成所在的包名
+             targetProject     指定在该项目下所在的路径
+         -->
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <!--<property name="enableSubPackages" value="false"/>
+            &lt;!&ndash; 是否对model添加 构造函数 &ndash;&gt;
+            <property name="constructorBased" value="true"/>
+            &lt;!&ndash; 是否对类CHAR类型的列的数据进行trim操作 &ndash;&gt;
+            <property name="trimStrings" value="true"/>
+            &lt;!&ndash; 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 &ndash;&gt;
+            <property name="immutable" value="false"/>-->
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+                        type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+                        type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+                        type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+                -->
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
+                             type="XMLMAPPER"/>
+
+        <table tableName="%">
+            <generatedKey column="id" sqlStatement="Mysql" identity="false"/>
+        </table>
+    </context>
+</generatorConfiguration>
