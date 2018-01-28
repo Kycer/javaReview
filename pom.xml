@@ -17,6 +17,7 @@
         <module>rabbitmq-demo</module>
         <module>webSocket-demo</module>
         <module>Netty</module>
+        <module>mybatis-plus-generator</module>
     </modules>
 
 
