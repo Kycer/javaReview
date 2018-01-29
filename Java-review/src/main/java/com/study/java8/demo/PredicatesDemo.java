@@ -4,7 +4,8 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
- * Predicate是一个布尔类型的函数，该函数只有一个输入参数。Predicate接口包含了多种默认方法，用于处理复杂的逻辑动词（and, or，negate）
+ * Predicate是一个布尔类型的函数，该函数只有一个输入参数。
+ * Predicate接口包含了多种默认方法，用于处理复杂的逻辑动词（and, or，negate）
  *
  * @author yk
  * @version 1.0 Date: 2017-12-19

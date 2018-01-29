@@ -18,5 +18,13 @@ public class FunctionsDemo {
         System.out.println(apply);     // 123
         System.out.println(apply1);     // "123"
 
+        String name = "";
+        String name1 = "12345";
+        System.out.println(validInput(name, s -> s.isEmpty() ? "名字不能为空" : s));
+        System.out.println(validInput(name1, s -> s.length() > 3 ? "名字过长" : s));
+    }
+
+    public static String validInput(String name, Function<String, String> function) {
+        return function.apply(name);
     }
 }
