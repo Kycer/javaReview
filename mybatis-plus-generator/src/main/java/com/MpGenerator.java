@@ -3,6 +3,8 @@ package com;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
@@ -21,7 +23,7 @@ public class MpGenerator {
     /**
      * OutputDir
      */
-    private static final String OUTPUT_DIR = "/home/yksoul/Code/workspaces/javaReview/mybatis-plus-generator/src/main/java";
+    private static final String OUTPUT_DIR = "/home/yksoul/Code/workspace/Study/javaReview/mybatis-plus-generator/src/main/java";
 
     /**
      * Author
@@ -72,15 +74,25 @@ public class MpGenerator {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig()
                 .setDbType(DbType.MYSQL)
-                /*.setTypeConvert(new MySqlTypeConvert() {
+                .setTypeConvert(new MySqlTypeConvert() {
                     // 自定义数据库表字段类型转换【可选】
                     @Override
                     public DbColumnType processTypeConvert(String fieldType) {
-                        System.out.println("转换类型：" + fieldType);
+                        String t = fieldType.toLowerCase();
                         // 注意！！processTypeConvert 存在默认类型转换，如果不是你要的效果请自定义返回、非如下直接返回。
-                        return super.processTypeConvert(fieldType);
+                        if (t.equals("date")) {
+                            return DbColumnType.LOCAL_DATE;
+                        } else if (t.equals("datetime")) {
+                            return DbColumnType.LOCAL_DATE_TIME;
+                        } else if (t.equals("time")) {
+                            return DbColumnType.LOCAL_TIME;
+                        } else if (t.equals("timestamp")) {
+                            return DbColumnType.TIMESTAMP;
+                        } else {
+                            return super.processTypeConvert(fieldType);
+                        }
                     }
-                })*/
+                })
                 .setDriverName(JDBC_DRIVER)
                 .setUsername(JDBC_USER)
                 .setPassword(JDBC_PASSWORD)
