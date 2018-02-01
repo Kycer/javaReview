@@ -105,9 +105,9 @@ public class MpGenerator {
                 // .setInclude(new String[] { "user" }) // 需要生成的表
                 // .setExclude(new String[]{"test"}) // 排除生成的表
                 // 自定义实体父类
-                // .setSuperEntityClass("com.baomidou.demo.TestEntity")
+                 .setSuperEntityClass(PACKAGE_NAME + ".entity.BaseEntity")
                 // 自定义实体，公共字段
-                // .setSuperEntityColumns(new String[] { "test_id", "age" })
+                .setSuperEntityColumns(new String[] { "id"})
                 // 自定义 mapper 父类
                 // .setSuperMapperClass("com.baomidou.demo.TestMapper")
                 // 自定义 service 父类
