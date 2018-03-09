@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
@@ -33,7 +34,7 @@ public class MpGenerator {
     /**
      * packageName
      */
-    private static final String PACKAGE_NAME = "com.yksoul";
+    private static final String PACKAGE_NAME = "com.jdhoe";
 
     /**
      * jdbc
@@ -42,7 +43,7 @@ public class MpGenerator {
     /**
      * user
      */
-    private static final String JDBC_USER = "root";
+    private static final String JDBC_USER = "jdhoe";
     /**
      * password
      */
@@ -59,14 +60,15 @@ public class MpGenerator {
                 .setOutputDir(OUTPUT_DIR)
                 .setFileOverride(true)
                 // 不需要ActiveRecord特性的请改为false
-                .setActiveRecord(true)
+                .setActiveRecord(false)
                 // XML 二级缓存
                 .setEnableCache(false)
                 // XML ResultMap
                 .setBaseResultMap(true)
                 // XML columList
                 .setBaseColumnList(false)
-                // .setKotlin(true) 是否生成 kotlin 代码
+                //是否生成 kotlin 代码
+//                .setKotlin(true)
                 // 自定义文件命名，注意 %s 会自动填充表实体属性！
                 // .setMapperName("%sDao")
                 .setAuthor(AUTHOR);
@@ -101,7 +103,7 @@ public class MpGenerator {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig()
                 // .setCapitalMode(true);// 全局大写命名 ORACLE 注意
-                // .setTablePrefix(new String[]{"tlog_", "tsys_"}) // 此处可以修改为您的表前缀
+//                 .setTablePrefix(new String[]{"sys_", "tsys_"}) // 此处可以修改为您的表前缀
                 // .setInclude(new String[] { "user" }) // 需要生成的表
                 // .setExclude(new String[]{"test"}) // 排除生成的表
                 // 自定义实体父类
@@ -123,7 +125,7 @@ public class MpGenerator {
                 // public User setName(String name) {this.name = name; return this;}
                 // .setEntityBuilderModel(true)
                 // 表名生成策略
-                .setEntityLombokModel(true)
+//                .setEntityLombokModel(true)
                 .setNaming(NamingStrategy.underline_to_camel);
 
         PackageConfig pc = new PackageConfig()
@@ -149,13 +151,19 @@ public class MpGenerator {
                 return "src/main/resources/mapper/" + tableInfo.getEntityName() + ".xml";
             }
         });*/
+        focList.add(new FileOutConfig("/templates/entity.kt.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return OUTPUT_DIR +"/" + PACKAGE_NAME.replaceAll("\\.", "\\/") + "/entity/" + tableInfo.getEntityName() + ".kt";
+            }
+        });
         cfg.setFileOutConfigList(focList);
 
         // 关闭默认 xml 生成，调整生成 至 根目录
         TemplateConfig tc = new TemplateConfig()
                 .setController(null)
+                .setEntity(null)
                 .setXml(null);
-
         // 执行生成
         new AutoGenerator()
                 .setGlobalConfig(gc)
