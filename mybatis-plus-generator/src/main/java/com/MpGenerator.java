@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
@@ -24,7 +23,7 @@ public class MpGenerator {
     /**
      * OutputDir
      */
-    private static final String OUTPUT_DIR = "/home/yksoul/Code/workspace/Study/javaReview/mybatis-plus-generator/src/main/java";
+    private static final String OUTPUT_DIR = "/home/yksoul/Code/workspaces/back/javaReview/mybatis-plus-generator/src/main/java";
 
     /**
      * Author
@@ -34,7 +33,7 @@ public class MpGenerator {
     /**
      * packageName
      */
-    private static final String PACKAGE_NAME = "com.jdhoe";
+    private static final String PACKAGE_NAME = "com.yksoul";
 
     /**
      * jdbc
@@ -43,7 +42,7 @@ public class MpGenerator {
     /**
      * user
      */
-    private static final String JDBC_USER = "jdhoe";
+    private static final String JDBC_USER = "root";
     /**
      * password
      */
@@ -125,7 +124,7 @@ public class MpGenerator {
                 // public User setName(String name) {this.name = name; return this;}
                 // .setEntityBuilderModel(true)
                 // 表名生成策略
-//                .setEntityLombokModel(true)
+                .setEntityLombokModel(true)
                 .setNaming(NamingStrategy.underline_to_camel);
 
         PackageConfig pc = new PackageConfig()
@@ -151,18 +150,18 @@ public class MpGenerator {
                 return "src/main/resources/mapper/" + tableInfo.getEntityName() + ".xml";
             }
         });*/
-        focList.add(new FileOutConfig("/templates/entity.kt.vm") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return OUTPUT_DIR +"/" + PACKAGE_NAME.replaceAll("\\.", "\\/") + "/entity/" + tableInfo.getEntityName() + ".kt";
-            }
-        });
+//        focList.add(new FileOutConfig("/templates/entity.kt.vm") {
+//            @Override
+//            public String outputFile(TableInfo tableInfo) {
+//                return OUTPUT_DIR +"/" + PACKAGE_NAME.replaceAll("\\.", "\\/") + "/entity/" + tableInfo.getEntityName() + ".kt";
+//            }
+//        });
         cfg.setFileOutConfigList(focList);
 
         // 关闭默认 xml 生成，调整生成 至 根目录
         TemplateConfig tc = new TemplateConfig()
                 .setController(null)
-                .setEntity(null)
+//                .setEntity(null)
                 .setXml(null);
         // 执行生成
         new AutoGenerator()

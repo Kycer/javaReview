@@ -12,6 +12,8 @@ import ${pkg};
 import com.baomidou.mybatisplus.annotations.Version;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 #end
 
@@ -25,6 +27,8 @@ import lombok.experimental.Accessors;
 #if(${entityLombokModel})
 @Data
 @Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
 #end
 #if(${table.convert})
 @TableName("${table.name}")
